@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Car_Rental_Management.Configurations.Entities;
+using Car_Rental_Management.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Car_Rental_Management.Domain;
-using Car_Rental_Management.Configurations.Entities;
 
 namespace Car_Rental_Management.Data
 {
-    public class Car_Rental_ManagementContext : DbContext
+    public class Car_Rental_ManagementContext(DbContextOptions<Car_Rental_ManagementContext> options) : IdentityDbContext<Car_Rental_ManagementUser>(options)
     {
-        public Car_Rental_ManagementContext (DbContextOptions<Car_Rental_ManagementContext> options)
-            : base(options)
-        {
-        }
-
         public DbSet<Car_Rental_Management.Domain.Booking> Booking { get; set; } = default!;
         public DbSet<Car_Rental_Management.Domain.Colour> Colour { get; set; } = default!;
         public DbSet<Car_Rental_Management.Domain.Customer> Customer { get; set; } = default!;
