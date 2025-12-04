@@ -1,8 +1,11 @@
 ﻿@page "/customers/delete"
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.EntityFrameworkCore
 @using Car_Rental_Management.Domain
 @inject IDbContextFactory<Car_Rental_Management.Data.Car_Rental_ManagementContext> DbFactory
 @inject NavigationManager NavigationManager
+
+@attribute [Authorize(Roles = "Administrator")]
 
 <PageTitle>Delete</PageTitle>
 
